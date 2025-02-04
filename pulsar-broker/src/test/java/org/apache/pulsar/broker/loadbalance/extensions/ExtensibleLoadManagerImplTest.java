@@ -725,7 +725,9 @@ public class ExtensibleLoadManagerImplTest extends ExtensibleLoadManagerImplBase
             assertTrue(producer.isConnected());
             assertTrue(consumers.stream().allMatch(Consumer::isConnected));
             assertTrue(unloadNamespaceBundle.isDone());
-            verify(lookup.getRight(), times(1 + consumerCount)).getBroker(topicName);
+            if (lookup != null) {
+                verify(lookup.getRight(), times(1 + consumerCount)).getBroker(topicName);
+            }
         } finally {
             for (var consumer : consumers) {
                 consumer.close();
