@@ -512,7 +512,7 @@ public class PersistentStickyKeyDispatcherMultipleConsumers extends PersistentDi
     }
 
     // checks if the entry can be dispatched to the consumer
-    private boolean canDispatchEntry(Consumer consumer,ReadType readType,
+    private boolean canDispatchEntry(Consumer consumer, ReadType readType,
                                      int stickyKeyHash) {
         // If redeliveryMessages contains messages that correspond to the same hash as the entry to be dispatched
         // do not send those messages for order guarantee
